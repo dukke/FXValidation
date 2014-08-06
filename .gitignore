@@ -33,5 +33,5 @@ tasks.xml
 # Scenic View auxiliary file
 scenicView.properties
 
-# JUnit
+# libraries includind JUnit and ScenicView
 lib/

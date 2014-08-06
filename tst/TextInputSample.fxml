@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import com.pixelduke.javafx.validation.RequiredField?>
+<?import com.pixelduke.javafx.validation.ErrorLabel?>
+<?import javafx.scene.layout.Region?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="394.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.pixelduke.javafx.validation.tests.TextInputSampleController">
+<VBox>
+    <Label>
+        <text>User Name:</text>
+    </Label>
+    <TextField fx:id="userName" id="userName"></TextField>
+    <Label>
+        <text>Password:</text>
+    </Label>
+    <PasswordField fx:id="password" id="password"></PasswordField>
+
+    <Button text="Submit" onAction="#submitPressed"></Button>
+
+    <fx:define>
+        <RequiredField fx:id="requiredField1" >
+            <srcControl>
+                <fx:reference source="userName"></fx:reference>
+            </srcControl>
+        </RequiredField>
+        <RequiredField fx:id="requiredField2" >
+            <srcControl>
+                <fx:reference source="password"></fx:reference>
+            </srcControl>
+        </RequiredField>
+    </fx:define>
+    <ErrorLabel message="Please enter your username" styleClass="first-error">
+        <validator>
+            <fx:reference source="requiredField1"></fx:reference>
+        </validator>
+    </ErrorLabel>
+    <ErrorLabel message="Please enter your password" >
+        <validator>
+            <fx:reference source="requiredField2"></fx:reference>
+        </validator>
+    </ErrorLabel>
+</VBox>
+</AnchorPane>
