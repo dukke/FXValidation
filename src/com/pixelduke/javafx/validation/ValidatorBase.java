@@ -5,8 +5,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Control;
-import javafx.scene.control.TextField;
 
 /**
  * Created by pedro_000 on 7/5/2014.
@@ -44,6 +42,7 @@ public abstract class ValidatorBase extends Parent {
     }
 
     public abstract void eval();
+    public abstract void eval(String regex);
 
     protected void onEval()
     {
