@@ -57,7 +57,7 @@ public class EvalUtils {
                 hasErrors.set(true);
             }
         }
-        if (Pattern.compile(regex).matcher(textField.getText()).matches()){
+        if (!Pattern.compile(regex).matcher(textField.getText()).matches()){
             hasErrors.set(true);
         }
     }
