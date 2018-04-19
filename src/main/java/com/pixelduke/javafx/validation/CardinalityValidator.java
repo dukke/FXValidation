@@ -1,5 +1,6 @@
 package com.pixelduke.javafx.validation;
 
+import com.pixelduke.javafx.utils.EvalUtils;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TextInputControl;
@@ -17,22 +18,19 @@ public class CardinalityValidator extends ValidatorBase{
 
     @Override
     public void eval() {
-        if(srcControl.get() instanceof TextInputControl)
-            evalTextInputField();
-    }
-
-    private void evalTextInputField()
-    {
-        TextInputControl textField = (TextInputControl) srcControl.get();
-        if (textField.getText() == null)
-            hasErrors.set(true);
-        else {
-            String text = textField.getText();
-            hasErrors.set(!evalString(text));
+        if(srcControl.get() instanceof TextInputControl) {
+            EvalUtils.eval(hasErrors, srcControl,false);
+            onEval();
         }
-
-        onEval();
     }
+    @Override
+    public void eval(String regex) {
+        if(srcControl.get() instanceof TextInputControl) {
+            EvalUtils.eval(hasErrors, srcControl, regex,false);
+            onEval();
+        }
+    }
+
 
     /*
     @return Returns true if the evaluated string is correct according to this validator
